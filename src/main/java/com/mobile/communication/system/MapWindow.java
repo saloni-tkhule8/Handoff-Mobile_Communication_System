@@ -13,7 +13,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class MapWindow {
+public class MapWindow extends JFrame{
     public JPanel panel;                       // Main panel to draw on
     private MobileStation []pedestrianThreads; // Threads for pedestrians
     private int numberOfPedestrians;           // Number of moving pedestrians
