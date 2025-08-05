@@ -27,9 +27,59 @@ The simulation is built using the Java Swing framework. Key logic is divided amo
 
 ## Visual Demo
 A screenshot of the simulation in action:
+
+
+
 <img width="392" height="189" alt="image" src="https://github.com/user-attachments/assets/912a015f-b443-48a0-8f0e-c97a8d454eb7" />
 
+
+
+
 <img width="1919" height="1037" alt="image" src="https://github.com/user-attachments/assets/ba52ae87-0f18-438f-a80c-4af5248337bb" />
+
+
+
+
+
+##Formulas
+
+The simulation's core logic is based on principles of radio propagation. The following formulas are used to model the behavior of the mobile stations and antennas.
+
+### 1. Distance Calculation
+
+The physical distance ($d$) between a mobile station ($MS$) and a fixed antenna is 
+
+$$
+d = \sqrt{(x_{MS} - x_{Antenna})^2 + (y_{MS} - y_{Antenna})^2}
+$$
+
+* The implementation in the code also includes a scaling factor (0.19) to convert the on-screen pixel coordinates into a more realistic distance unit.
+
+### 2. Received Power (Friis Transmission Equation)
+
+The signal strength received by a mobile station ($P_r$) from an antenna is calculated using the **Friis Transmission Equation**. This formula models how the power of a radio wave diminishes with distance in free space.
+
+The formula is as follows:
+
+$$
+P_r = P_t \times G_t \times G_r \times \left(\frac{\lambda}{4\pi d}\right)^2 \times L
+$$
+
+Where:
+* $P_r$ is the received signal power (in Watts).
+* $P_t$ is the transmitted power (in Watts), converted from dBm.
+* $G_t$ is the transmitter antenna gain (linear scale).
+* $G_r$ is the receiver antenna gain (linear scale).
+* $\lambda$ (lambda) is the wavelength of the signal, calculated as $\frac{c}{f}$, where $c$ is the speed of light ($3 \times 10^8$ m/s) and $f$ is the frequency.
+* $d$ is the distance between the transmitter and receiver.
+* $L$ represents system losses (in the code, this is a fixed value equivalent to 15 dB).
+
+
+The conversion from dB to a linear ratio is done using the formula:
+
+$$
+\text{Linear Value} = 10^{(\text{dB Value} / 10)}
+$$
 
 
 
